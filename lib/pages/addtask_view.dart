@@ -39,13 +39,15 @@ class AddTask extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      const textfield(
+                      textfield(
                         title: 'Title',
                         hinttext: 'Enter Title here',
+                        controller: viewModel.textEditingControllertitle,
                       ),
-                      const textfield(
+                      textfield(
                         title: 'Note',
                         hinttext: 'Enter Note here',
+                        controller: viewModel.textEditingControllernote,
                       ),
                       Text(
                         "Date",
@@ -162,13 +164,37 @@ class AddTask extends StatelessWidget {
                               )
                             ],
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: const [button(label: "Create Task")],
-                          )
                         ],
                       ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                viewModel.validate();
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(15),
+                                width: 300,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.purple),
+                                child: const Text("Create Task",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
+                            ),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),

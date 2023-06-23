@@ -36,6 +36,7 @@ dependencies:
   app_settings: 4.2.0
   intl: ^0.18.0
   date_picker_timeline: ^1.2.5
+  sqflite:
 
 
   # The following adds the Cupertino Icons font to your application.

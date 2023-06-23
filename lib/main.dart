@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertodolist/controllers/db_helper.dart';
 import 'package:fluttertodolist/pages/addtask_view.dart';
 import 'package:fluttertodolist/pages/home_view.dart';
 import 'package:fluttertodolist/pages/home_viewmodel.dart';
@@ -9,6 +10,7 @@ import 'notify.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await DBHelper.initDb();
   await NotifyHelper().setup();
   await GetStorage.init();
   runApp(const MyApp());

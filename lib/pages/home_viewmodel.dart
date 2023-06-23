@@ -18,16 +18,14 @@ class TodoHomeViewModel extends BaseViewModel {
   }
 
   DateTime _selectedDate = DateTime.now();
-  DateTime get selectedDate => _selectedDate;
-
   DateTime modalCurrentDate = DateTime.now();
   modalDate() {
     modalCurrentDate = _selectedDate;
   }
 
-  onDaySelected(DateTime day, DateTime focusedDay) {
-    modalCurrentDate = day;
-    _selectedDate = day;
-    notifyListeners();
-  }
+  // onDaySelected(DateTime day, DateTime focusedDay) {
+  //   modalCurrentDate = day;
+  //   _selectedDate = day;
+  //   notifyListeners();
+  // }
 }
