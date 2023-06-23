@@ -37,6 +37,8 @@ dependencies:
   intl: ^0.18.0
   date_picker_timeline: ^1.2.5
   sqflite:
+  flutter_staggered_animations: ^1.1.1
+
 
 
   # The following adds the Cupertino Icons font to your application.

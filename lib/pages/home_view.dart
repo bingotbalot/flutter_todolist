@@ -1,6 +1,8 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertodolist/controllers/task_controller.dart';
 import 'package:fluttertodolist/notify.dart';
+import 'package:fluttertodolist/pages/Todolist_viewmodel.dart';
 import 'package:fluttertodolist/pages/addtask_view.dart';
 import 'package:fluttertodolist/theme.dart';
 import 'package:fluttertodolist/widgets.dart';
@@ -14,14 +16,14 @@ class TodoHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<TodoHomeViewModel>.reactive(
-        viewModelBuilder: () => TodoHomeViewModel(),
+    return ViewModelBuilder<TodoListViewModel>.reactive(
+        viewModelBuilder: () => TodoListViewModel(),
         builder: ((context, viewModel, child) => Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.purple,
                 leading: GestureDetector(
                   onTap: () {
-                    TodoHomeViewModel().switchTheme();
+                    TodoListViewModel().switchTheme();
                     NotifyHelper().showLocalNotification(
                       'Flutter Notification',
                       'Congrats on your first local notification',
@@ -34,7 +36,7 @@ class TodoHome extends StatelessWidget {
                 ),
               ),
               body: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
                     Row(
@@ -66,7 +68,10 @@ class TodoHome extends StatelessWidget {
                           children: [
                             button(
                                 label: "+ Add Task",
-                                onTap: () => Get.to(const AddTask())),
+                                onTap: () async {
+                                  await Get.to(() => AddTask());
+                                  viewModel.taskController.getTasks();
+                                }),
                           ],
                         )
                       ],
@@ -84,10 +89,11 @@ class TodoHome extends StatelessWidget {
                         dayTextStyle: calendar,
                         monthTextStyle: calendar,
                         onDateChange: (date) {
-                          viewModel.modalCurrentDate = date;
+                          viewModel.modalCurrentHomeDate = date;
                         },
                       ),
-                    )
+                    ),
+                    TodoListViewModel().showTasks()
                   ],
                 ),
               ),

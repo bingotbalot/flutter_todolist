@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertodolist/controllers/db_helper.dart';
-import 'package:fluttertodolist/pages/addtask_view.dart';
+import 'package:fluttertodolist/pages/Todolist_viewmodel.dart';
 import 'package:fluttertodolist/pages/home_view.dart';
-import 'package:fluttertodolist/pages/home_viewmodel.dart';
 import 'package:fluttertodolist/theme.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: Themes.light,
       darkTheme: Themes.dark,
-      themeMode: TodoHomeViewModel().theme,
+      themeMode: TodoListViewModel().theme,
       home: const TodoHome(),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertodolist/models/task.dart';
 import 'package:fluttertodolist/theme.dart';
 
 class button extends StatelessWidget {
@@ -89,5 +90,77 @@ class textfield extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class TaskTile extends StatelessWidget {
+  final Task? task;
+  TaskTile(this.task);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 355,
+      margin: const EdgeInsets.only(bottom: 12),
+      child: Container(
+        padding: const EdgeInsets.all(15),
+        //  width: SizeConfig.screenWidth * 0.78,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: _getBGClr(task?.color ?? 0),
+        ),
+        child: Row(children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  task?.title ?? "",
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      overflow: TextOverflow.ellipsis),
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  task?.note ?? "",
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey[100],
+                      overflow: TextOverflow.ellipsis),
+                ),
+              ],
+            ),
+          ),
+          // Container(
+          //   margin: EdgeInsets.symmetric(horizontal: 10),
+          //   height: 60,
+          //   width: 0.5,
+          //   color: Colors.grey[200]!.withOpacity(0.7),
+          // ),
+        ]),
+      ),
+    );
+  }
+
+  _getBGClr(int no) {
+    switch (no) {
+      case 0:
+        return Colors.amber;
+      case 1:
+        return Colors.pink;
+      case 2:
+        return Colors.blue;
+      case 3:
+        return Colors.red;
+      case 4:
+        return Colors.orange;
+      default:
+        return Colors.pink;
+    }
   }
 }

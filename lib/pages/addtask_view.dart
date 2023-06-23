@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertodolist/pages/Todolist_viewmodel.dart';
 import 'package:fluttertodolist/theme.dart';
 import 'package:fluttertodolist/widgets.dart';
 import 'package:get/get.dart';
-import 'package:fluttertodolist/pages/addtask_viewmodel.dart';
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
 
@@ -11,8 +11,8 @@ class AddTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<AddTaskViewModel>.reactive(
-        viewModelBuilder: () => AddTaskViewModel(),
+    return ViewModelBuilder<TodoListViewModel>.reactive(
+        viewModelBuilder: () => TodoListViewModel(),
         builder: ((context, viewModel, child) => Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.purple,
